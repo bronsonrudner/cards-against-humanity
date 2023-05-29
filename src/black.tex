@@ -1,0 +1,22 @@
+\input{src/main.tex}
+
+\renewcommand{\ticketdefault}{\color{white}%
+    \put(0,0){\begin{tikzpicture}
+        \fill [\blackname] (0mm,0mm) rectangle (5cm,5cm);
+    \end{tikzpicture}}
+    \carddefault
+}
+
+\begin{document}
+
+\newgeometry{margin=1cm,footskip=0pt}
+
+\DTLsetseparator{;}
+\DTLloaddb{Questions}{black.csv}
+\DTLforeach{Questions}{\Text=Text}{%
+    \ticket{
+        \cardtext{\Text}
+    }
+}
+
+\end{document}
